@@ -5,9 +5,9 @@ Feature: I want to be able to add several beds to my cart
         Given that I am on the start page
 
     Scenario Outline: Adding several beds to my cart
-        Given that I have searched for "Säng"
-        When I click the buy button "<quantity>" time
-        Then "<quantity>" should be added to my cart
+        Given that I have searched for the item "Säng"
+        When I click the buy button "<quantity>" times
+        Then "<quantity>" "Säng" should be added to my cart so that I can buy it
 
 
         Examples:

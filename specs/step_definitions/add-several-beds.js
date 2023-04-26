@@ -11,12 +11,12 @@ import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
 let searchedFor;
 
-Given('that I have searched for {string}', (a) => {
+Given('that I have searched for the item {string}', (a) => {
   searchedFor = a;
   cy.get('#search').type(a);
 });
 
-When('I click the buy button {string} time', (quantity) => {
+When('I click the buy button {string} times', (quantity) => {
   for (let i = 1; i <= +quantity; i++) {
     cy.log("searchedFor", searchedFor);
     // find h2 that contains the product we have searched for
@@ -30,11 +30,11 @@ When('I click the buy button {string} time', (quantity) => {
   }
 });
 
-Then('{string} should be added to my cart', (quantity) => {
-  cy.get('Säng')
-    .contains(productName)
+Then('{string} {string} should be added to my cart so that I can buy it', (quantity, a) => {
+  cy.get('#cart li')
+    .contains(a)
     // and also contains the correct quantity
     .contains(quantity + 'st')
     // we should 1 element
-    .should('have.length', 3);
+    .should('have.length', 1);
 });
