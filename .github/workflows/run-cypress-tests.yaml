@@ -3,14 +3,15 @@ name: Node.js CI
 # Trigger which git action (push, pull_request)
 # in which branch(es) should start the jobs...
 on:
-  push:
-    branches: [main]
+  pull_request:
+    branches: [main, dev]
 
 # jobs to run
 jobs:
   # build, the name of the job, a server to create and auto configure
   build:
 
+    # on github actions this comes with MySQL 8.0 :)
     runs-on: ubuntu-latest
 
     strategy:
@@ -34,11 +35,17 @@ jobs:
       # of npm install -> installs all npm modules
       # mentioned in package.json, preferably during CI
     - run: npm ci
-      # if the project has a npm run build command
-      # then runs (not needed right now but keep)
-    - run: npm run build --if-present
-      # start the application (lumiashop)
-    - run: nohup npm start &
+      # start mysql and change default password
+      # use the password from your settings.json fil in this repo
+    - run: sudo service mysql start
+    - run: mysqladmin --user=root --password=root password "rootroot"
+      # restart mysql
+    - run: sudo service mysql restart
+      # seed the db with initial dummy/test data
+    - run: npm run seed-db
+      # start the backend / rest-api-server 
+      # (without blocking the terminal - nohup)
+    - run: nohup npm run backend &
       # run whatever is specified in package.json
       # for the script test
     - run: npm test
