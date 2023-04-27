@@ -1,14 +1,5 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
-// this step definition is already in search.js
-// so commented it out since duplicate step definitions
-// are not allowed
-/*Given('that I am on the start page', () => {
-});*/
-
-// A bed did not exist in the shop before
-// so I had to add one myself.
-
 let searchedFor;
 
 Given('that I have searched for the item {string}', (a) => {

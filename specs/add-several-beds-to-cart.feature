@@ -12,7 +12,7 @@ Feature: I want to be able to add several beds to my cart
 
         Examples:
           | product| quantity |
-          | Bed    | 1        |
-          | Bed    | 2        |
-          | Bed    | 5        |
-          | Bed    | 9        |
+          | Säng    | 1        |
+          | Säng    | 2        |
+          | Säng    | 5        |
+          | Säng    | 9        |

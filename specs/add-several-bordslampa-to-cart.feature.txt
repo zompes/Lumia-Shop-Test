@@ -1,0 +1,19 @@
+Feature: I want to be able to add several bordslampa to my cart
+    As a user I want to be able to add several bordslampa to my cart
+
+
+    Background: 
+        Given that I am on the start page
+    
+    Scenario Outline: Adding several Bordslampa to my cart
+        Given that I have searched for the item "Bordslampa"
+        When I click the button to buy "<quantity>" times
+        Then "<quantity>" "Bordslampa" should be added to my cart so that I can buy it
+
+
+        Examples:
+          | product       | quantity |
+          | Bordslampa    | 1        |
+          | Bordslampa    | 2        |
+          | Bordslampa    | 5        |
+          | Bordslampa    | 9        |
