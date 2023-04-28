@@ -5,7 +5,7 @@ import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 // are not allowed
 /*Given('that I am on the start page', () => {
 });*/
-
+//jksdfskfjf
 // define variables outside steps
 // (and give them values inside a step)
 // if you want to reuse them in another step
